@@ -1,7 +1,7 @@
 name: Dump
 description: |
-  環境変数と github コンテキストをログへ出力する。
-  ワークフローのデバッグに便利。
+  環境変数とgithubコンテキストをログへ出力します。
+  ワークフローのデバッグに便利です。
 inputs:
   enable-context:
     default: "true"
@@ -16,10 +16,10 @@ runs:
   steps:
     - run: printenv | sort
       shell: bash
-    - run: echo "${ CONTEXT }"
+    - run: echo "${CONTEXT}"
       if: ${{ inputs.enable-context == 'true' }}
       env:
-        CONTEXT: ${{ toJson(github) }}
+        CONTEXT: ${{ toJSON(github) }}
       shell: bash
     - id: current
       run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"
